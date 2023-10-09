@@ -18,5 +18,5 @@
 12. Для разворачивания API необходимо готовый kubeconfig от провайдера с выделенным namespace
 13. Переходим в <папку развертывания>/helm/sre-course-api
 14. В values.yaml необходимо указать кол-во реплик (replicaCount), корректируем параметр подключения к БД и порт работы (variables)
-15. Разворачиваем приложение командой: helm install sre-course-api sre-course-api --kubeconfig=<ваш kubeconfig>
+15. Разворачиваем приложение командой: helm install sre-course-api sre-course-api --kubeconfig=<ваш kubeconfig> в папке ./helm
 16. Проверяем доступность подов и их работу. При необходимости корректируем ресурсы (resources) в values.yaml. Обновляем API: helm upgrade sre-course-api sre-course-api --kubeconfig=<ваш kubeconfig>
