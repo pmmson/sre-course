@@ -1,0 +1,4 @@
+ssh_key/*
+infra/*
+*.yaml
+*.cfg
