@@ -41,7 +41,7 @@ securityContext: {}
 
 variables:
   ASPNETCORE_URLS: http://*:8008
-  CONNECTIONSTRINGS__PGCONNECTION: server=91.185.84.205; port=5000; database=weather; user id=postgres; password=postgres-pass;
+  CONNECTIONSTRINGS__PGCONNECTION: server=xx.xx.xx.xx; port=xxxx; database=weather; user id=*****; password=******;
 
 service:
   type: ClusterIP
@@ -69,10 +69,10 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
  limits:
-  cpu: 250m
+  cpu: 200m
   memory: 128Mi
  requests:
-  cpu: 125m
+  cpu: 80m
   memory: 64Mi
 
 autoscaling:
