@@ -3,3 +3,4 @@ infra
 *.yaml
 *.cfg
 backupConfigs
+k6/node_modules
