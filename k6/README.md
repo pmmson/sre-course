@@ -21,10 +21,9 @@ k6: тестовый инструмент
 =====================================================================================================
 
 Тест 1 Проверка работоспособности приложения
-  scenarios: (100.00%) 1 scenario, 3 max VUs, 1m30s max duration (incl. graceful stop):
+  
+    scenarios: (100.00%) 1 scenario, 3 max VUs, 1m30s max duration (incl. graceful stop):
            * default: 3 looping VUs for 1m0s (gracefulStop: 30s)
-
-
      data_received..................: 11 MB 171 kB/s
      data_sent......................: 21 kB 342 B/s
      http_req_blocked...............: avg=1.72ms   min=2µs     med=6µs     max=169.75ms p(90)=8µs      p(95)=9µs     
@@ -41,10 +40,10 @@ k6: тестовый инструмент
      iterations.....................: 67    1.08404/s
      vus............................: 1     min=1      max=3
      vus_max........................: 3     min=3      max=3
+     
+     running (1m01.8s), 0/3 VUs, 67 complete and 0 interrupted iterations
+     default ✓ [======================================] 3 VUs  1m0s
 
-
-running (1m01.8s), 0/3 VUs, 67 complete and 0 interrupted iterations
-default ✓ [======================================] 3 VUs  1m0s
 ![image](https://github.com/pmmson/sre-course/assets/43889620/12ca0d18-69e2-4b92-8fbe-8a9891168603)
 по методу GET:/weatherforecast требования по длительности запроса-ответа значительно превышены
 min 1.47s / max 3.47s / p95 3.39s / p99 3.46s ошибок не наблюдалось
