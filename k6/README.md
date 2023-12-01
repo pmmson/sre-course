@@ -48,7 +48,7 @@ k6: тестовый инструмент
      running (1m03.0s), 0/3 VUs, 49 complete and 0 interrupted iterations
      default ✓ [======================================] 3 VUs  1m0s
 
-Общий график тестирования
+График теста
 <img width="1360" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/305a541a-bf53-4178-b6e0-bcf516461c88">
 
 по методу GET:/weatherforecast требования по длительности запроса-ответа значительно превышены
