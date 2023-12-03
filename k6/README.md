@@ -102,6 +102,7 @@ min 1.54s / max 6.07s / p95 5.28s / p99 5.73s ошибок не наблюдал
 по графику CPU Pods фиксируется максимальная загрузка - фиксируется рестарт PODs в момент отказа
 
 <img width="666" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/970b46df-6af3-4123-9ea5-ab8380524d38">
+<img width="666" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/5707a531-7be4-4edc-8051-580a114fad22">
 
 время команды 21:59 03/12/23
 
