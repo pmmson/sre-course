@@ -104,14 +104,17 @@ min 1.54s / max 6.07s / p95 5.28s / p99 5.73s ошибок не наблюдал
 <img width="666" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/970b46df-6af3-4123-9ea5-ab8380524d38">
 
 время команды 21:59 03/12/23
-kubectl get pod sre-course-api-55dc8cc8cb-sw2vr
-NAME                              READY   STATUS    RESTARTS       AGE
-sre-course-api-55dc8cc8cb-sw2vr   1/1     Running   30 (44m ago)   34d
-kubectl get pod sre-course-api-55dc8cc8cb-4tkqf
-NAME                              READY   STATUS    RESTARTS       AGE
-sre-course-api-55dc8cc8cb-4tkqf   1/1     Running   16 (44m ago)   34d
 
+    kubectl get pod sre-course-api-55dc8cc8cb-sw2vr
+    NAME                              READY   STATUS    RESTARTS       AGE
+    sre-course-api-55dc8cc8cb-sw2vr   1/1     Running   30 (44m ago)   34d
+    kubectl get pod sre-course-api-55dc8cc8cb-4tkqf
+    NAME                              READY   STATUS    RESTARTS       AGE
+    sre-course-api-55dc8cc8cb-4tkqf   1/1     Running   16 (44m ago)   34d
 
+в логах приложения
+
+    [18:15:47 INF] Application started. Press Ctrl+C to shut down.
 
 
 
