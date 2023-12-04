@@ -119,70 +119,76 @@ min 1.54s / max 6.07s / p95 5.28s / p99 5.73s ошибок не наблюдал
 
 Для следующего теста - нагрузочного, берем ~80% от предыдущего результата - 120 VUs, 300rps
 
-**Тест 3 - нагрузочный - load test**
+**Тест 3 - нагрузочный - load test 1**
 
-    scenarios: (100.00%) 1 scenario, 120 max VUs, 17m35s max duration (incl. graceful stop):
-           * default: Up to 120 looping VUs for 17m5s over 4 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+    scenarios: (100.00%) 1 scenario, 120 max VUs, 7m35s max duration (incl. graceful stop):
+           * default: Up to 120 looping VUs for 7m5s over 4 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+           running (0m46.9s), 084/120 VUs, 2096 complete and 0 interru
+           running (0m47.0s), 084/120 VUs, 2099 complete and 0 interru
 
-ERRO[0252] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0252] Successful flushed time series to remote write endpoint but it took 7.257531833s while flush period is 5s. Some samples may be dropped.  nts=129585 output="Prometheus remote write"
-ERRO[0276] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0276] Successful flushed time series to remote write endpoint but it took 6.239799567s while flush period is 5s. Some samples may be dropped.  nts=133703 output="Prometheus remote write"
-ERRO[0284] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0284] Successful flushed time series to remote write endpoint but it took 7.828915145s while flush period is 5s. Some samples may be dropped.  nts=233985 output="Prometheus remote write"
-ERRO[0334] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0335] Successful flushed time series to remote write endpoint but it took 50.448753465s while flush period is 5s. Some samples may be dropped.  nts=130687 output="Prometheus remote write"
-WARN[0371] Request Failed                                error="Get \"http://91.185.85.213/forecast\": request timeout"
-ERRO[0501] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0501] Successful flushed time series to remote write endpoint but it took 2m45.870453278s while flush period is 5s. Some samples may be dropped.  nts=134457 output="Prometheus remote write"
-ERRO[0507] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0507] Successful flushed time series to remote write endpoint but it took 6.365340698s while flush period is 5s. Some samples may be dropped.  nts=143679 output="Prometheus remote write"
-ERRO[0512] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0512] Successful flushed time series to remote write endpoint but it took 5.070048091s while flush period is 5s. Some samples may be dropped.  nts=5407 output="Prometheus remote write"
-ERRO[0520] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0520] Successful flushed time series to remote write endpoint but it took 7.948045635s while flush period is 5s. Some samples may be dropped.  nts=132717 output="Prometheus remote write"
-ERRO[0529] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0529] Successful flushed time series to remote write endpoint but it took 8.674633244s while flush period is 5s. Some samples may be dropped.  nts=189035 output="Prometheus remote write"
-ERRO[0548] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0548] Successful flushed time series to remote write endpoint but it took 18.78222536s while flush period is 5s. Some samples may be dropped.  nts=129585 output="Prometheus remote write"
-ERRO[0555] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0555] Successful flushed time series to remote write endpoint but it took 6.918993166s while flush period is 5s. Some samples may be dropped.  nts=129759 output="Prometheus remote write"
-ERRO[0562] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0562] Successful flushed time series to remote write endpoint but it took 7.502000545s while flush period is 5s. Some samples may be dropped.  nts=129759 output="Prometheus remote write"
-ERRO[0574] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0575] Successful flushed time series to remote write endpoint but it took 12.643327737s while flush period is 5s. Some samples may be dropped.  nts=129759 output="Prometheus remote write"
-ERRO[0612] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0612] Successful flushed time series to remote write endpoint but it took 37.162915102s while flush period is 5s. Some samples may be dropped.  nts=120943 output="Prometheus remote write"
-ERRO[0641] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0641] Successful flushed time series to remote write endpoint but it took 29.319242708s while flush period is 5s. Some samples may be dropped.  nts=254401 output="Prometheus remote write"
-ERRO[0798] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0798] Successful flushed time series to remote write endpoint but it took 2m35.798988157s while flush period is 5s. Some samples may be dropped.  nts=129759 output="Prometheus remote write"
-ERRO[0808] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0808] Successful flushed time series to remote write endpoint but it took 10.401955452s while flush period is 5s. Some samples may be dropped.  nts=129759 output="Prometheus remote write"
-ERRO[0961] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[0961] Successful flushed time series to remote write endpoint but it took 2m32.508945268s while flush period is 5s. Some samples may be dropped.  nts=129353 output="Prometheus remote write"
-ERRO[1059] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[1059] Successful flushed time series to remote write endpoint but it took 1m38.677343011s while flush period is 5s. Some samples may be dropped.  nts=199127 output="Prometheus remote write"
-ERRO[1065] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
-WARN[1065] Successful flushed time series to remote write endpoint but it took 5.443998144s while flush period is 5s. Some samples may be dropped.  nts=73731 output="Prometheus remote write"
+     data_received..................: 995 MB 5.5 MB/s
+     data_sent......................: 3.8 MB 21 kB/s
+     http_req_blocked...............: avg=56.01µs  min=640ns   med=1.65µs   max=29.52ms p(90)=4.02µs  p(95)=6.41µs 
+     http_req_connecting............: avg=52.51µs  min=0s      med=0s       max=29.22ms p(90)=0s      p(95)=0s     
+     http_req_duration..............: avg=471.63ms min=1.64ms  med=92.34ms  max=17.96s  p(90)=1.25s   p(95)=1.39s  
+       { expected_response:true }...: avg=632.64ms min=2.24ms  med=202.06ms max=17.96s  p(90)=1.3s    p(95)=1.47s  
+    ✗ http_req_failed................: 25.95% ✓ 9684       ✗ 27621
+     http_req_receiving.............: avg=11.7ms   min=8.88µs  med=50.08µs  max=2.29s   p(90)=6.03ms  p(95)=99.17ms
+     http_req_sending...............: avg=27.82µs  min=3.25µs  med=8.65µs   max=30.51ms p(90)=23.67µs p(95)=39.53µs
+     http_req_tls_handshaking.......: avg=0s       min=0s      med=0s       max=0s      p(90)=0s      p(95)=0s     
+     http_req_waiting...............: avg=459.89ms min=1.62ms  med=89.95ms  max=17.96s  p(90)=1.19s   p(95)=1.39s  
+     http_reqs......................: 37305  205.015856/s
+     iteration_duration.............: avg=1.89s    min=10.62ms med=1.23s    max=20.29s  p(90)=4.09s   p(95)=4.81s  
+     iterations.....................: 9284   51.021772/s
+     vus............................: 120    min=1        max=120
+     vus_max........................: 120    min=120      max=120
+     
+     running (3m02.0s), 000/120 VUs, 9284 complete and 120 interrupted iterations
+     default ✗ [===============>----------------------] 118/120 VUs  3m02.0s/7m05.0s
+     ERRO[0185] thresholds on metrics 'http_req_failed' were crossed; at least one has abortOnFail enabled, stopping test prematurely 
 
-     data_received..................: 1.4 GB  1.3 MB/s
-     data_sent......................: 110 MB  108 kB/s
-     http_req_blocked...............: avg=867.68µs min=596ns    med=1µs      max=3.85s  p(90)=2.28µs   p(95)=3.99µs  
-     http_req_connecting............: avg=646.04µs min=0s       med=0s       max=2.97s  p(90)=0s       p(95)=0s      
-    ✓ http_req_duration..............: avg=102.66ms min=429.03µs med=11.01ms  max=1m2s   p(90)=195.02ms p(95)=484.22ms
-       { expected_response:true }...: avg=1.39s    min=2.14ms   med=671.71ms max=21.02s p(90)=3.39s    p(95)=6.56s   
-    ✗ http_req_failed................: 97.35%  ✓ 1058777     ✗ 28719
-     http_req_receiving.............: avg=3.23ms   min=0s       med=14.04µs  max=7.92s  p(90)=31.69µs  p(95)=65.83µs 
-     http_req_sending...............: avg=868.92µs min=3.14µs   med=5.12µs   max=5.1s   p(90)=12.4µs   p(95)=19.21µs 
-     http_req_tls_handshaking.......: avg=0s       min=0s       med=0s       max=0s     p(90)=0s       p(95)=0s      
-     http_req_waiting...............: avg=98.56ms  min=398.41µs med=10.86ms  max=1m2s   p(90)=190.27ms p(95)=470.35ms
-     http_reqs......................: 1087496 1060.506325/s
-     iteration_duration.............: avg=424.56ms min=2.23ms   med=41.67ms  max=1m7s   p(90)=986.82ms p(95)=2.17s   
-     iterations.....................: 271874  265.126581/s
-     vus............................: 2       min=1         max=120
-     vus_max........................: 120     min=120       max=120
-     running (17m05.4s), 000/120 VUs, 271874 complete and 0 interrupted iterations
-     default ✓ [======================================] 000/120 VUs  17m5s
+<img width="1354" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/f37f6548-e048-40cd-881d-9e52ec58e9fe">
 
+Система не стабильна, как только происходит рестарт одновременно двух подов - фиксируется лавинный рост ошибок
+
+<img width="819" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/6e3546dd-cdae-46e0-8b9b-5c3bacc99464">
+<img width="658" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/f90b0d86-68d5-4ade-8cc7-acf60dfad80d">
+
+видимой причиной рестартов подов - достижение предела в 200 сессий на HAProxy
+
+<img width="658" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/8e770f7d-6a11-4509-b4c9-780594e70b0e">
+
+**Тест 3 - нагрузочный - load test 2**
+100 VUs - успешный результат
+
+    scenarios: (100.00%) 1 scenario, 100 max VUs, 7m35s max duration (incl. graceful stop):
+           * default: Up to 100 looping VUs for 7m5s over 4 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+     data_received..................: 1.8 GB 4.3 MB/s
+     data_sent......................: 5.1 MB 12 kB/s
+     http_req_blocked...............: avg=43.23µs  min=746ns   med=1.95µs   max=29.11ms p(90)=4.58µs  p(95)=9.56µs  
+     http_req_connecting............: avg=39.1µs   min=0s      med=0s       max=29.04ms p(90)=0s      p(95)=0s      
+     http_req_duration..............: avg=715.2ms  min=2.17ms  med=703.35ms max=14.56s  p(90)=1.17s   p(95)=1.39s   
+       { expected_response:true }...: avg=715.58ms min=2.17ms  med=703.46ms max=14.56s  p(90)=1.17s   p(95)=1.39s   
+    ✓ http_req_failed................: 0.13%  ✓ 69         ✗ 50503
+     http_req_receiving.............: avg=22.26ms  min=12.03µs med=401.36µs max=1.5s    p(90)=99.58ms p(95)=113.75ms
+     http_req_sending...............: avg=25.03µs  min=4.35µs  med=10µs     max=34.94ms p(90)=28.44µs p(95)=44.97µs 
+     http_req_tls_handshaking.......: avg=0s       min=0s      med=0s       max=0s      p(90)=0s      p(95)=0s      
+     http_req_waiting...............: avg=692.91ms min=2.1ms   med=697.68ms max=14.36s  p(90)=1.1s    p(95)=1.3s    
+     http_reqs......................: 50572  118.969077/s
+     iteration_duration.............: avg=2.86s    min=14.61ms med=2.55s    max=18.16s  p(90)=4.46s   p(95)=6.01s   
+     iterations.....................: 12643  29.742269/s
+     vus............................: 1      min=1        max=100
+     vus_max........................: 100    min=100      max=100
+     
+     running (7m05.1s), 000/100 VUs, 12643 complete and 0 interrupted iterations
+     default ✓ [======================================] 000/100 VUs  7m5s
+
+<img width="1355" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/27cf8f51-f04a-4e5b-bb6e-1ab064d45bc5">
+
+кол-во ошибок в допустимых пределах http_req_failed: 0.13%  ✓ 69
+длительность запрос-ответа более 500ms
+фиксировался рестарт только одного пода, по кол-ву сессий предел в 200 не был превышен
+<img width="658" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/c485c439-b5ac-4225-9ccc-b357f9c6b67e">
+<img width="674" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/bf569f1e-3940-41de-af07-d2a18aa4ec5e">
 
