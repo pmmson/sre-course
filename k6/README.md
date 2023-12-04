@@ -187,6 +187,7 @@ min 1.54s / max 6.07s / p95 5.28s / p99 5.73s ошибок не наблюдал
 <img width="1355" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/27cf8f51-f04a-4e5b-bb6e-1ab064d45bc5">
 
 кол-во ошибок в допустимых пределах http_req_failed: 0.13%  ✓ 69
+<img width="674" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/a3af8483-d43e-4ce3-9b2e-6fd25bfc7cef">
 длительность запрос-ответа более 500ms
 фиксировался рестарт только одного пода, по кол-ву сессий предел в 200 не был превышен
 <img width="658" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/c485c439-b5ac-4225-9ccc-b357f9c6b67e">
