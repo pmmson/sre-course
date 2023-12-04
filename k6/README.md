@@ -12,7 +12,8 @@
 
 ![image](https://github.com/pmmson/sre-course/assets/43889620/c65493d4-58d7-4a8d-a7e7-57ccb375a47b)
 
-Ресурсы инфраструктуры
+Ресурсы инфраструктуры и версия приложения
+версия: tag "f0135e1"
 VMs: 6шт ( vCPU 1шт, RAM 2 ГБ )
 k8s: replicaCount 2, resources: limits ( cpu: 200m memory: 128Mi ), requests ( cpu: 80m, memory: 64Mi ), autoscaling: false
 DB: 1118 cities, 1118 forecast - 1 прогноз на 1 город
