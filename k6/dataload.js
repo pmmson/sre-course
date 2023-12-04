@@ -65,7 +65,7 @@ request({
         console.log(response.statusCode);
         cities = JSON.parse(body);
         var i;
-        for (i = 0; i < cities.length; ++i) {
+        for (i = 1; i < cities.length; ++i) {
             //console.log(cities[i].id);
             request({
                 headers: { 'HOST': 'sre-course-api.weather-api' },
