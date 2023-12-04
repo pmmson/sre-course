@@ -12,7 +12,8 @@
 
 ![image](https://github.com/pmmson/sre-course/assets/43889620/c65493d4-58d7-4a8d-a7e7-57ccb375a47b)
 
-Ресурсы инфраструктуры
+Ресурсы инфраструктуры и версия приложения
+версия: tag "f0135e1"
 VMs: 6шт ( vCPU 1шт, RAM 2 ГБ )
 k8s: replicaCount 2, resources: limits ( cpu: 200m memory: 128Mi ), requests ( cpu: 80m, memory: 64Mi ), autoscaling: false
 DB: 1118 cities, 1118 forecast - 1 прогноз на 1 город
@@ -119,7 +120,78 @@ min 1.54s / max 6.07s / p95 5.28s / p99 5.73s ошибок не наблюдал
 
 Для следующего теста - нагрузочного, берем ~80% от предыдущего результата - 120 VUs, 300rps
 
-**Тест 3 - нагрузочный - load test**
+**Тест 3 - нагрузочный - load test 1**
 
+    scenarios: (100.00%) 1 scenario, 120 max VUs, 7m35s max duration (incl. graceful stop):
+           * default: Up to 120 looping VUs for 7m5s over 4 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+           running (0m46.9s), 084/120 VUs, 2096 complete and 0 interru
+           running (0m47.0s), 084/120 VUs, 2099 complete and 0 interru
+
+     data_received..................: 995 MB 5.5 MB/s
+     data_sent......................: 3.8 MB 21 kB/s
+     http_req_blocked...............: avg=56.01µs  min=640ns   med=1.65µs   max=29.52ms p(90)=4.02µs  p(95)=6.41µs 
+     http_req_connecting............: avg=52.51µs  min=0s      med=0s       max=29.22ms p(90)=0s      p(95)=0s     
+     http_req_duration..............: avg=471.63ms min=1.64ms  med=92.34ms  max=17.96s  p(90)=1.25s   p(95)=1.39s  
+       { expected_response:true }...: avg=632.64ms min=2.24ms  med=202.06ms max=17.96s  p(90)=1.3s    p(95)=1.47s  
+    ✗ http_req_failed................: 25.95% ✓ 9684       ✗ 27621
+     http_req_receiving.............: avg=11.7ms   min=8.88µs  med=50.08µs  max=2.29s   p(90)=6.03ms  p(95)=99.17ms
+     http_req_sending...............: avg=27.82µs  min=3.25µs  med=8.65µs   max=30.51ms p(90)=23.67µs p(95)=39.53µs
+     http_req_tls_handshaking.......: avg=0s       min=0s      med=0s       max=0s      p(90)=0s      p(95)=0s     
+     http_req_waiting...............: avg=459.89ms min=1.62ms  med=89.95ms  max=17.96s  p(90)=1.19s   p(95)=1.39s  
+     http_reqs......................: 37305  205.015856/s
+     iteration_duration.............: avg=1.89s    min=10.62ms med=1.23s    max=20.29s  p(90)=4.09s   p(95)=4.81s  
+     iterations.....................: 9284   51.021772/s
+     vus............................: 120    min=1        max=120
+     vus_max........................: 120    min=120      max=120
+     
+     running (3m02.0s), 000/120 VUs, 9284 complete and 120 interrupted iterations
+     default ✗ [===============>----------------------] 118/120 VUs  3m02.0s/7m05.0s
+     ERRO[0185] thresholds on metrics 'http_req_failed' were crossed; at least one has abortOnFail enabled, stopping test prematurely 
+
+<img width="1354" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/f37f6548-e048-40cd-881d-9e52ec58e9fe">
+
+Система не стабильна, как только происходит рестарт одновременно двух подов - фиксируется лавинный рост ошибок
+
+<img width="819" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/6e3546dd-cdae-46e0-8b9b-5c3bacc99464">
+<img width="658" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/f90b0d86-68d5-4ade-8cc7-acf60dfad80d">
+
+видимой причиной рестартов подов - достижение предела в 200 сессий на HAProxy
+
+<img width="658" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/8e770f7d-6a11-4509-b4c9-780594e70b0e">
+
+**Тест 3 - нагрузочный - load test 2**
+100 VUs - успешный результат
+
+    scenarios: (100.00%) 1 scenario, 100 max VUs, 7m35s max duration (incl. graceful stop):
+           * default: Up to 100 looping VUs for 7m5s over 4 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+     data_received..................: 1.8 GB 4.3 MB/s
+     data_sent......................: 5.1 MB 12 kB/s
+     http_req_blocked...............: avg=43.23µs  min=746ns   med=1.95µs   max=29.11ms p(90)=4.58µs  p(95)=9.56µs  
+     http_req_connecting............: avg=39.1µs   min=0s      med=0s       max=29.04ms p(90)=0s      p(95)=0s      
+     http_req_duration..............: avg=715.2ms  min=2.17ms  med=703.35ms max=14.56s  p(90)=1.17s   p(95)=1.39s   
+       { expected_response:true }...: avg=715.58ms min=2.17ms  med=703.46ms max=14.56s  p(90)=1.17s   p(95)=1.39s   
+    ✓ http_req_failed................: 0.13%  ✓ 69         ✗ 50503
+     http_req_receiving.............: avg=22.26ms  min=12.03µs med=401.36µs max=1.5s    p(90)=99.58ms p(95)=113.75ms
+     http_req_sending...............: avg=25.03µs  min=4.35µs  med=10µs     max=34.94ms p(90)=28.44µs p(95)=44.97µs 
+     http_req_tls_handshaking.......: avg=0s       min=0s      med=0s       max=0s      p(90)=0s      p(95)=0s      
+     http_req_waiting...............: avg=692.91ms min=2.1ms   med=697.68ms max=14.36s  p(90)=1.1s    p(95)=1.3s    
+     http_reqs......................: 50572  118.969077/s
+     iteration_duration.............: avg=2.86s    min=14.61ms med=2.55s    max=18.16s  p(90)=4.46s   p(95)=6.01s   
+     iterations.....................: 12643  29.742269/s
+     vus............................: 1      min=1        max=100
+     vus_max........................: 100    min=100      max=100
+     
+     running (7m05.1s), 000/100 VUs, 12643 complete and 0 interrupted iterations
+     default ✓ [======================================] 000/100 VUs  7m5s
+
+<img width="1355" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/27cf8f51-f04a-4e5b-bb6e-1ab064d45bc5">
+
+кол-во ошибок в допустимых пределах http_req_failed: 0.13%  ✓ 69
+<img width="674" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/a3af8483-d43e-4ce3-9b2e-6fd25bfc7cef">
+длительность запрос-ответа более 500ms
+фиксировался рестарт только одного пода, по кол-ву сессий предел в 200 не был превышен
+<img width="658" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/c485c439-b5ac-4225-9ccc-b357f9c6b67e">
+<img width="674" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/991774b9-583e-462a-82da-ec5bdfce3fc7">
 
 
