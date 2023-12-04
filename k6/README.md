@@ -24,7 +24,9 @@ k6: тестовый инструмент
 =====================================================================================================
 
 **Тест 1 Проверка работоспособности приложения - smoke test**
-  
+
+https://github.com/pmmson/sre-course/blob/master/k6/smoke_test.js
+
     scenarios: (100.00%) 1 scenario, 3 max VUs, 1m30s max duration (incl. graceful stop):
            * default: 3 looping VUs for 1m0s (gracefulStop: 30s)
 
@@ -64,6 +66,8 @@ min 1.54s / max 6.07s / p95 5.28s / p99 5.73s ошибок не наблюдал
 
 **Тест 2 - Тест на отказ - breakpoint_test**
 Условием отказа выбран >1% ошибок и проводится без метода GET:/weatherforecast
+
+https://github.com/pmmson/sre-course/blob/master/k6/breakpoint_test.js
 
      scenarios: (100.00%) 1 scenario, 1000 max VUs, 30m35s max duration (incl. graceful stop):
       * default: Up to 1000 looping VUs for 30m5s over 2 stages (gracefulRampDown: 30s, gracefulStop: 30s)
@@ -122,6 +126,8 @@ min 1.54s / max 6.07s / p95 5.28s / p99 5.73s ошибок не наблюдал
 
 **Тест 3 - нагрузочный - load test 1**
 
+https://github.com/pmmson/sre-course/blob/master/k6/load_test_1.js
+
     scenarios: (100.00%) 1 scenario, 120 max VUs, 7m35s max duration (incl. graceful stop):
            * default: Up to 120 looping VUs for 7m5s over 4 stages (gracefulRampDown: 30s, gracefulStop: 30s)
            running (0m46.9s), 084/120 VUs, 2096 complete and 0 interru
@@ -160,6 +166,9 @@ min 1.54s / max 6.07s / p95 5.28s / p99 5.73s ошибок не наблюдал
 <img width="658" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/8e770f7d-6a11-4509-b4c9-780594e70b0e">
 
 **Тест 3 - нагрузочный - load test 2**
+
+https://github.com/pmmson/sre-course/blob/master/k6/load_test_2.js
+
 100 VUs - успешный результат
 
     scenarios: (100.00%) 1 scenario, 100 max VUs, 7m35s max duration (incl. graceful stop):
@@ -195,6 +204,8 @@ min 1.54s / max 6.07s / p95 5.28s / p99 5.73s ошибок не наблюдал
 <img width="674" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/991774b9-583e-462a-82da-ec5bdfce3fc7">
 
 **Тест 4 - Стресс тест**
+
+https://github.com/pmmson/sre-course/blob/master/k6/stress_test.js
 
 При вроедении теста зафиксированы множественные ошибки со стороны Prometheus
 ERRO[0256] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
