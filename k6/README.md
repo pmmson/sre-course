@@ -190,5 +190,6 @@ min 1.54s / max 6.07s / p95 5.28s / p99 5.73s ошибок не наблюдал
 длительность запрос-ответа более 500ms
 фиксировался рестарт только одного пода, по кол-ву сессий предел в 200 не был превышен
 <img width="658" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/c485c439-b5ac-4225-9ccc-b357f9c6b67e">
-<img width="674" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/bf569f1e-3940-41de-af07-d2a18aa4ec5e">
+<img width="674" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/991774b9-583e-462a-82da-ec5bdfce3fc7">
+
 
