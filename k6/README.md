@@ -194,4 +194,34 @@ min 1.54s / max 6.07s / p95 5.28s / p99 5.73s ошибок не наблюдал
 <img width="658" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/c485c439-b5ac-4225-9ccc-b357f9c6b67e">
 <img width="674" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/991774b9-583e-462a-82da-ec5bdfce3fc7">
 
+**Тест 4 - Стресс тест**
 
+При вроедении теста зафиксированы множественные ошибки со стороны Prometheus
+ERRO[0256] Failed to send the time series data to the endpoint  error="HTTP POST request failed: Post \"http://10.10.10.2:9090/api/v1/write\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" output="Prometheus remote write"
+WARN[0256] Successful flushed time series to remote write endpoint but it took 5.952150602s while flush period is 5s. Some samples may be dropped.  nts=130339 output="Prometheus remote write"
+
+    scenarios: (100.00%) 1 scenario, 300 max VUs, 7m45s max duration (incl. graceful stop):
+      * default: Up to 300 looping VUs for 7m15s over 8 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+     data_received..................: 1.5 GB  3.5 MB/s
+     data_sent......................: 114 MB  261 kB/s
+     http_req_blocked...............: avg=270.42µs min=590ns    med=932ns   max=1.26s    p(90)=1.71µs   p(95)=2.66µs  
+     http_req_connecting............: avg=268.46µs min=0s       med=0s      max=1.26s    p(90)=0s       p(95)=0s      
+     http_req_duration..............: avg=29.03ms  min=339.2µs  med=7.22ms  max=13.36s   p(90)=40.84ms  p(95)=96.77ms 
+       { expected_response:true }...: avg=372.66ms min=2.25ms   med=42.51ms max=13.36s   p(90)=195.35ms p(95)=2.88s   
+     http_req_failed................: 97.18%  ✓ 1088527     ✗ 31501
+     http_req_receiving.............: avg=260.45µs min=7.75µs   med=13.06µs max=501.77ms p(90)=24.97µs  p(95)=38.31µs 
+     http_req_sending...............: avg=79.85µs  min=2.97µs   med=4.8µs   max=242.55ms p(90)=9.73µs   p(95)=15.63µs 
+     http_req_tls_handshaking.......: avg=0s       min=0s       med=0s      max=0s       p(90)=0s       p(95)=0s      
+     http_req_waiting...............: avg=28.69ms  min=323.49µs med=7.1ms   max=13.36s   p(90)=39.99ms  p(95)=95.49ms 
+     http_reqs......................: 1120028 2574.773386/s
+     iteration_duration.............: avg=117.4ms  min=1.86ms   med=39.25ms max=25.59s   p(90)=219.24ms p(95)=283.71ms
+     iterations.....................: 280007  643.693347/s
+     vus............................: 1       min=1         max=300
+     vus_max........................: 300     min=300       max=300
+     
+     running (7m15.0s), 000/300 VUs, 280007 complete and 0 interrupted iterations
+     default ✓ [======================================] 000/300 VUs  7m15s
+
+получить данные с Prometheus не представляется возможным - вся память 2Gb и весь swap 2Gb утилизированы
+Так как Prometheus соседствует с HAProxy - было оказано влияние и на приложение
