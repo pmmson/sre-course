@@ -149,6 +149,7 @@ mmp@sre-etcd-01:~$ etcdctl endpoint status --cluster -w table --endpoints http:/
 <img width="673" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/5e91c7f1-9903-4828-bd01-23b699e552e7">
 что привело к недоступности БД
 <img width="1350" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/7c388b5e-43d1-4ff2-a306-4e43e807da8f">
+<img width="1427" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/0e1d69f8-8565-46d6-9e52-5dad660f7015">
 
 причина
 Отсутствие ETCD вызвает сбой работы Patroni который в свою очередь блокирует работу БД через HAProxy
