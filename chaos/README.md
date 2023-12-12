@@ -157,6 +157,19 @@ mmp@sre-etcd-01:~$ etcdctl endpoint status --cluster -w table --endpoints http:/
 способ решения
 https://patroni.readthedocs.io/en/latest/dcs_failsafe_mode.html
 
+!! Отключение нод патрони !!
+Выключаем реплика ноду патрони - наблюдаем влияние
+При отключении реплики патрони влияние не обнаружено
+
+Выключаем мастер ноду патрони
+При отключении мастер ноды, произошло переключение мастера и наблюдается влияние, всплеск 500 ошибки
+При интесивном трафике - будет значительно
+<img width="877" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/267fed5e-6c63-4ec8-98e8-fa0a12cb981c">
+
+
+
+
+
 
 
 
