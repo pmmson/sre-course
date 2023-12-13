@@ -167,6 +167,27 @@ https://patroni.readthedocs.io/en/latest/dcs_failsafe_mode.html
 <img width="877" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/267fed5e-6c63-4ec8-98e8-fa0a12cb981c">
 
 
+!! Высокая нагрузка на CPU !!
+На Patroni мастер-сервер, создаем высокую нагрузку на CPU при помощи chaosblade
+blade create cpu fullload
+<img width="1341" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/e033b18d-e43e-4a53-85ca-2d7383c49b77">
+<img width="675" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/fb204818-3397-429f-a1e2-9d3d3b1ca65d">
+
+фиксурием увеличение время ответа на запросы к приложению
+<img width="1348" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/20cdc5b3-955e-44bb-af1a-6095a1a11251">
+<img width="1354" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/22f773ef-d3a1-428b-9950-b15c70d19702">
+Снимаем нагрузку
+
+Создаем нагрузку на память - так же Patroni-мастер
+blade c mem load --mode ram --mem-percent 80
+<img width="1154" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/8e301e4b-a995-4da8-9dc2-cc4c4058e4f7">
+потребление памяти значительно, но деградация не наблдается
+<img width="1348" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/ccc16c0f-fbd3-4a45-93fe-c3c0077ef4d0">
+
+снимаем нагрузку
+возникла проблема fatal error: runtime: cannot allocate memory
+мастер машину перегружаем
+
 
 
 
