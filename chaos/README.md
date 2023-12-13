@@ -212,7 +212,23 @@ sudo ./blade create network loss --percent 50 --interface ens160 --destination-i
 рестарты подов в Кубере и возрастание нагрузки CPU на подах
 <img width="689" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/d1bccc21-f78c-4d58-93ee-8d10f357a770">
 
-!!  !!
+фиксировались алерты на медленный ответ по пробам приложения
+Alerts Firing:
+Labels:
+ - alertname = BlackboxSlowProbe
+ - instance = /weatherforecast
+ - job = blackbox probes
+Annotations:
+Source: http://sre-ansbl-hprx:9090/graph?g0.expr=avg_over_time%28probe_duration_seconds%5B1m%5D%29+%3E+1&g0.tab=1
+
+Alerts Firing:
+Labels:
+ - alertname = BlackboxSlowProbe
+ - instance = /forecast/1
+ - job = blackbox probes
+Annotations:
+Source: http://sre-ansbl-hprx:9090/graph?g0.expr=avg_over_time%28probe_duration_seconds%5B1m%5D%29+%3E+1&g0.tab=1
+
 
 
 
