@@ -188,6 +188,32 @@ blade c mem load --mode ram --mem-percent 80
 возникла проблема fatal error: runtime: cannot allocate memory
 мастер машину перегружаем
 
+!! сетевые проблемы !!
+На хосте HAProxy создаем сетевую задержку в сторону мастер ноды Postgres
+sudo ./blade create network delay --time 500 --interface ens160 --destination-ip 10.10.10.7
+<img width="705" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/4521023e-4a65-467f-9970-4737dfeb800e">
+фиксируем влияние на длительнотсь ответов
+<img width="1353" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/bfc1c66e-0309-44df-8048-02e29a9c75da">
+<img width="1353" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/207c7f91-d8f4-4091-aac7-6ba82e5722de">
+отключаем эксперимент
+
+Эмулируем потерю пакетов в направлении мастер Postgres 50%
+sudo ./blade create network loss --percent 50 --interface ens160 --destination-ip 10.10.10.7
+фиксируем потерю пакетов
+<img width="618" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/a668b062-6a58-4e73-aeea-12bd79bc0aa6">
+
+эксперимент оказал достаточно сильное влияние
+зафикисрован ряд ошибок 499, 500
+снижение доступности и возрастание времени ответа
+<img width="1355" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/8321d4e7-051e-4aa6-a245-1177c1a28328">
+<img width="1355" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/e7f19c06-3046-4b3d-846f-27cf385c1109">
+<img width="1353" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/8e02fe55-f664-47ff-b8f6-d102e8525ad5">
+
+рестарты подов в Кубере и возрастание нагрузки CPU на подах
+<img width="689" alt="image" src="https://github.com/pmmson/sre-course/assets/43889620/d1bccc21-f78c-4d58-93ee-8d10f357a770">
+
+!!  !!
+
 
 
 
